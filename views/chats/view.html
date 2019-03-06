@@ -1,0 +1,28 @@
+<h2><?=$data['chat']['title']?></h2>
+
+<table class="table table-striped" style="width: 800px;">
+    <?php foreach($data['chats'] as $chats_data) : ?>
+    <tr>
+        <td><?=$chats_data['time']?></td>
+        <td><?=$chats_data['login']?></td>
+        <td><?=$chats_data['message']?></td>
+        <td><?php if (Session::get('userid') != 0) : ?>
+        <a href="/chats/invisibleMessages/<?=$chat_data['id']?>" onclick="return confirmDelete();"><button class="btn btn-sm btn-warning">Удалить</button> </a></td> <?php endif; ?>
+    </tr>
+<?php endforeach;?>
+</table>
+
+<h3>Ответить</h3>
+    <form action="" method="post">
+        <textarea name="message" class="form-control" placeholder="Написать сообщение"></textarea><br/>
+        <button class="btn btn-lg btn-primary btn-block">Отправить</button>
+    </form>
+<br/>
+<?php if (Session::get('userid') != 0) : ?>
+<div>
+    <a href="/chats/add"><button class="btn btn-sm btn-success">Новая беседа</button> </a>
+</div>
+<?php endif; ?>
+
+
+

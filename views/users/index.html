@@ -1,0 +1,13 @@
+<h3>Пользователи</h3><br/>
+
+<table class="table table-striped" style="width: 400px;">
+    <?php foreach($data['users'] as $user_data) : ?>
+    <tr>
+        <td><b> <a href="/users/view/<?=$user_data['id']?>"><?=$user_data['login']?></a> </b></ta['login']?> </td>
+        <td align="right">
+            <a href="/users/privat/<?=$user_data['id']?>"><button class="btn btn-sm btn-primary">ЛС</button> </a>
+        </td>
+    </tr>
+<?php endforeach; ?>
+</table>
+<br/>

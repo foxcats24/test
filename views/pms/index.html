@@ -1,0 +1,28 @@
+<h3>Мои личные беседы</h3><br/>
+
+<table class="table table-striped" style="width: 400px;">
+    <?php foreach($data['users'] as $user_data) : ?>
+ <tr>
+       <td>
+        <a href="/chats/view/<?=$user_data['login']?>"><?=$user_data['login']?></a> id чата
+    </td>
+    <td>
+        <a href="/chats/view/<?=$user_data['id']?>"><?=$chats_pm_data['id_user_sender']?></a> ПОЛУЧИЛ
+    </td>
+    
+        <?php if (Session::get('userid') != 0) : ?>
+            <td align="right">
+               <a href="/chats/invisibleChats/<?=$chat_data['id']?>" onclick="return confirmDelete();"><button class="btn btn-sm btn-warning">Удалить</button> </a>
+            </td>
+        <?php endif; ?>
+    </tr>
+<?php endforeach;?>
+
+</table>
+<?php if (Session::get('userid') != 0) : ?>
+<div>
+    <a href="/chats/add"><button class="btn btn-sm btn-success">Новая беседа</button> </a>
+</div>
+<?php endif; ?>
+
+<?php var_dump($id_user_sender);?>

@@ -1,0 +1,35 @@
+<h4><?=$data['user']['login']?> - Личные сообщения</h4>
+
+
+<table class="table table-striped" style="width: 800px;">
+    <?php foreach($data['users'] as $user_data) : ?>
+ <tr>
+        <td>   <?=$user_data['id_user_sender']?></td>
+        <td>   <?=$user_data['message']?></td>
+        <td>   <?=$user_data['id_user_recipient']?></td>
+        
+        <td> <?php if (Session::get('userid') != 0) : ?>
+        <a href="/chats/invisibleMessages/<?=$chat_data['id']?>" onclick="return confirmDelete();"><button class="btn btn-sm btn-warning">Удалить</button> </a></td> <?php endif; ?>
+    </tr>
+<?php endforeach;?>
+</table>
+
+<h3>Ответить</h3>
+<form action="" method="post">
+    <textarea name="message" class="form-control" placeholder="Написать сообщение"></textarea><br/>
+    <button class="btn btn-lg btn-primary btn-block">Отправить</button>
+</form>
+<br/>
+<?php var_dump($user_data['id_user_sender']);?>
+<?php var_dump($user_data['id_user_recipient'] );?>
+<?php var_dump($data['private_messages']['id_user_recipient'] );?>
+<br/>
+<?php var_dump($user_data['id_user_recipient'] );?>
+<br/>
+<?php var_dump($id_user_recipient);?>
+<br/>
+id сессии
+<?php var_dump(Session::get('userid'));?>
+<br/>
+строка
+<?php var_dump(App::getRouter()->getParams());?>
